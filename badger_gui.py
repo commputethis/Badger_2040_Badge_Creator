@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-import os
+from tkinter import Frame
+from PIL import ImageTk, Image
 import time
 import subprocess
 
@@ -10,92 +11,62 @@ class BadgeForm:
         master.title("Badge Creator")
         master.attributes('-fullscreen',True)
 
-        #getting screen width and height of display
-        #width= master.winfo_screenwidth()
-        #height= master.winfo_screenheight()
-        #setting tkinter window size
-        #master.geometry("%dx%d" % (width, height))
+        # Add Event Title Label
+        self.label_event = tk.Label(master, text="BSides Fort Wayne 2023", font=("Ariel",25))
+        self.label_event.pack()
 
-        self.label_name = tk.Label(master, text="Name")
-        self.label_name.grid(row=0, sticky='ne')
+        # Add form Title Label
+        self.label_title = tk.Label(master, text="Badge Creator", font=("Ariel",25))
+        self.label_title.pack()
 
-        self.label_company = tk.Label(master, text="Company")
-        self.label_company.grid(row=1, sticky='ne', padx=10, pady=0)
+        # Load the image
+        self.image = ImageTk.PhotoImage(Image.open("/home/dprows/Documents/Badger_2040/BadgeLogo.jpg"))
 
-        self.label_status = tk.Label(master, text="Status")
-        self.label_status.grid(row=2, sticky='ne', padx=10, pady=0)
+        # Create a label for the image
+        self.image_label = tk.Label(master, image=self.image)
+        self.image_label.pack()
 
-        self.entry_name = tk.Entry(master)
-        self.entry_name.grid(row=0, column=1, sticky='nw', padx=10, pady=0)
+        # Create a container frame for the fields
+        self.field_container = tk.Frame(master)
+        self.field_container.pack(padx=10, pady=10)
 
-        self.entry_company = tk.Entry(master)
-        self.entry_company.grid(row=1, column=1, sticky='nw', padx=10, pady=0)
+        # Create a frame for the labels
+        self.label_container = tk.Frame(self.field_container)
+        self.label_container.pack(side=tk.LEFT)
 
+        # Add Name Label
+        self.label_name = tk.Label(self.label_container, text="Name:", font=("Ariel, 18"))
+        self.label_name.grid(row=0, sticky='e')
+
+        # Add Company Label
+        self.label_company = tk.Label(self.label_container, text="Company:", font=("Ariel, 18"))
+        self.label_company.grid(row=1, sticky='e')
+
+        # Add Status Label
+        self.label_status = tk.Label(self.label_container, text="Status:", font=("Ariel, 18"))
+        self.label_status.grid(row=2, sticky='e')
+
+        # Create a frame for the entry widgets
+        self.entry_container = tk.Frame(self.field_container)
+        self.entry_container.pack(side=tk.LEFT)
+
+        # Add Entry for Name
+        self.entry_name = tk.Entry(self.entry_container, bd = 5)
+        self.entry_name.grid(row=0, column=1)
+
+        # Add Entry for Company
+        self.entry_company = tk.Entry(self.entry_container, bd = 5)
+        self.entry_company.grid(row=1, column=1)
+
+        # Add Dropdown for Status
         self.options = ["Attendee", "Sponsor", "Speaker", "Volunteer"]
         self.status_var = tk.StringVar()
         self.status_var.set(self.options[0])
-        self.status_dropdown = tk.OptionMenu(master, self.status_var, *self.options)
-        self.status_dropdown.grid(row=2, column=1, sticky='nw', padx=10, pady=0)
+        self.status_dropdown = tk.OptionMenu(self.entry_container, self.status_var, *self.options)
+        self.status_dropdown.grid(row=2, column=1, sticky='ew')
 
-        self.submit_button = tk.Button(master, text="Create Badge", command=self.create_badge)
-        self.submit_button.grid(row=3, columnspan=2, sticky='n', padx=10, pady=0)
-
-        self.space1 = tk.Label(master, height=1)
-        self.space1.grid(row=4, columnspan=2, sticky='')
-
-        self.space2 = tk.Label(master, height=1)
-        self.space2.grid(row=5, columnspan=2, sticky='')
-
-        self.space3 = tk.Label(master, height=1)
-        self.space3.grid(row=6, columnspan=2, sticky='')
-
-        self.space4 = tk.Label(master, height=1)
-        self.space4.grid(row=7, columnspan=2, sticky='')
-
-        self.space5 = tk.Label(master, height=1)
-        self.space5.grid(row=8, columnspan=2, sticky='')
-
-        self.space6 = tk.Label(master, height=1)
-        self.space6.grid(row=9, columnspan=2, sticky='')
-
-        self.space7 = tk.Label(master, height=1)
-        self.space7.grid(row=10, columnspan=2, sticky='')
-
-        self.space8 = tk.Label(master, height=1)
-        self.space8.grid(row=11, columnspan=2, sticky='')
-
-        self.space9 = tk.Label(master, height=1)
-        self.space9.grid(row=12, columnspan=2, sticky='')
-
-        self.space10 = tk.Label(master, height=1)
-        self.space10.grid(row=13, columnspan=2, sticky='')
-
-        self.space11 = tk.Label(master, height=1)
-        self.space11.grid(row=14, columnspan=2, sticky='')
-
-        self.space12 = tk.Label(master, height=1)
-        self.space12.grid(row=15, columnspan=2, sticky='')
-
-        self.space13 = tk.Label(master, height=1)
-        self.space13.grid(row=16, columnspan=2, sticky='')
-
-        self.space14 = tk.Label(master, height=1)
-        self.space14.grid(row=17, columnspan=2, sticky='')
-
-        self.space15 = tk.Label(master, height=1)
-        self.space15.grid(row=18, columnspan=2, sticky='')
-
-        self.space16 = tk.Label(master, height=1)
-        self.space16.grid(row=19, columnspan=2, sticky='')
-
-        self.space17 = tk.Label(master, height=1)
-        self.space17.grid(row=20, columnspan=2, sticky='')
-
-        self.space18 = tk.Label(master, height=1)
-        self.space18.grid(row=21, columnspan=2, sticky='')
-
-        self.space19 = tk.Label(master, height=1)
-        self.space19.grid(row=22, columnspan=2, sticky='')
+        self.submit_button = tk.Button(master, text="Create Badge", command=self.create_badge, width=30, height=5, bd=5)
+        self.submit_button.pack(pady=10)
 
     def create_badge(self):
         # Get the user input
