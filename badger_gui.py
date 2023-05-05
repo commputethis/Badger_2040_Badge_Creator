@@ -20,7 +20,7 @@ class BadgeForm:
         self.label_title.pack()
 
         # Load the image
-        self.image = ImageTk.PhotoImage(Image.open("/home/dprows/Documents/Badger_2040/BadgeLogo.jpg"))
+        self.image = ImageTk.PhotoImage(Image.open("/home/user/Documents/Badger_2040/BadgeLogo.jpg"))
 
         # Create a label for the image
         self.image_label = tk.Label(master, image=self.image)
