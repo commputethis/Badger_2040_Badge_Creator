@@ -9,10 +9,10 @@ import subprocess
 local_path = "/home/user/Documents/Badger_2040/"
 conference = "BSides Fort Wayne 2023"
 badge_logo = "/badges/BadgeLogo.jpg"
-badge_creator_logo = local_path + "BSidesLogo.png"
-badge_file = local_path + "badge.txt"
-badge_image = local_path + "BadgeLogo.jpg"
-badge_script = local_path + "badge.py"
+badge_creator_logo = local_path + "/images/BSidesLogo.png"
+badge_file = local_path + "/code/badge.txt"
+badge_image = local_path + "/images/BadgeLogo.jpg"
+badge_script = local_path + "/code/badge.py"
 serial_port = "/dev/ttyACM0"
 
 class BadgeForm:
