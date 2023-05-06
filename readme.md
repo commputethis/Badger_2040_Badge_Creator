@@ -2,13 +2,15 @@
 
 This is a work in progress and more information will be added soon.
 
-<!-- vscode-markdown-toc -->
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
+- [Badger 2040](#badger-2040)
+  - [Summary](#summary)
+  - [Requirements](#requirements)
+  - [Badger GUI Script](#badger-gui-script)
+  - [Create Badge Script](#create-badge-script)
+  - [Badge Script](#badge-script)
+  - [BSides Fort Wayne Logo](#bsides-fort-wayne-logo)
+  - [Badge Logo](#badge-logo)
+  - [Badge Text File](#badge-text-file)
 
 ## Summary
 
