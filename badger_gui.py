@@ -123,7 +123,7 @@ class BadgeForm:
         status = self.status_var.get()
 
         # Write the information to a file called badge.txt
-        with open(badge, "w") as f:
+        with open(badge_file, "w") as f:
             f.write(f"{status}\n{name}\n{company}\n\n{conference}\n\n{badge_logo}")
 
         # Wait for the Badger 2040 board to be ready
