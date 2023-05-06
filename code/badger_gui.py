@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-from tkinter import Frame
 from PIL import ImageTk, Image
 import time
 import subprocess
@@ -9,11 +8,12 @@ import subprocess
 local_path = "/home/user/Documents/Badger_2040/"
 conference = "BSides Fort Wayne 2023"
 badge_logo = "/badges/BadgeLogo.jpg"
-badge_creator_logo = local_path + "/images/BSidesLogo.png"
-badge_file = local_path + "/code/badge.txt"
-badge_image = local_path + "/images/BadgeLogo.jpg"
-badge_script = local_path + "/code/badge.py"
+badge_creator_logo = local_path + "images/BSidesLogo.png"
+badge_file = local_path + "code/badge.txt"
+badge_image = local_path + "images/BadgeLogo.jpg"
+badge_script = local_path + "code/badge.py"
 serial_port = "/dev/ttyACM0"
+status = ['Attendee', 'Sponsor', 'Speaker', 'Volunteer']
 
 class BadgeForm:
     def __init__(self, master):
@@ -24,7 +24,7 @@ class BadgeForm:
 
         # Add Event Title Label
         self.label_event = tk.Label(master, 
-                                    text="BSides Fort Wayne 2023", 
+                                    text=conference, 
                                     font=("Ariel",25))
         self.label_event.pack()
 
@@ -89,10 +89,7 @@ class BadgeForm:
                                 column=1)
 
         # Add Dropdown for Status
-        self.options = ["Attendee", 
-                        "Sponsor", 
-                        "Speaker", 
-                        "Volunteer"]
+        self.options = status
         self.status_var = tk.StringVar()
         self.status_var.set(self.options[0])
         self.status_dropdown = tk.OptionMenu(self.entry_container, 
@@ -156,7 +153,7 @@ class BadgeForm:
         # Clear the form
         self.entry_name.delete(0, tk.END)
         self.entry_company.delete(0, tk.END)
-        self.status_var.set("Attendee")
+        self.status_var.set(self.options[0])
 
 root = tk.Tk()
 
