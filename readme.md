@@ -22,6 +22,7 @@ The following need to be installed:
 
 - python3
 - pip3
+- pil
 - tkinter
 - rshell
 
