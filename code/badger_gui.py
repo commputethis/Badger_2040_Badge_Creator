@@ -127,24 +127,17 @@ class BadgeForm:
         time.sleep(2)
 
         # Transfer the files to the Badger 2040 board
-        subprocess.run(['rshell', 
-                        '-p', 
-                        serial_port, 
-                        'cp', 
-                        badge_file, 
-                        '/badges'])
-        subprocess.run(['rshell', 
-                        '-p', 
-                        serial_port, 
-                        'cp', 
-                        badge_image, 
-                        '/badges'])
-        subprocess.run(['rshell', 
-                        '-p', 
-                        serial_port, 
-                        'cp', 
-                        badge_script, 
-                        '/examples'])
+        subprocess.run(['rshell', '-p', 
+                  serial_port, 
+                  'cp', 
+                  badge_file, 
+                  badge_image, 
+                  '/badges'])
+        subprocess.run(['rshell', '-p', 
+                  serial_port, 
+                  'cp', 
+                  badge_script, 
+                  '/examples'])
 
         # Show a message box to confirm the badge was created
         messagebox.showinfo("Badge Created", 
