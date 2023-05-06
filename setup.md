@@ -46,7 +46,7 @@ Install Tkinter using the following from terminal:
 
 Install rshell using the following from terminal:
 
-- ```sudo apt install python3-rshell```
+- ```sudo pip3 install rshell```
 
 ## Add user to the dialout group
 
