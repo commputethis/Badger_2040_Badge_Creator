@@ -5,7 +5,7 @@ import time
 import subprocess
 
 # Set global variables
-local_path = "/home/dprows/Documents/Badger_2040/"
+local_path = "/home/user/Documents/Badger_2040/"
 conference = "BSides Fort Wayne 2023"
 badge_logo = "/badges/BadgeLogo.jpg"
 badge_creator_logo = local_path + "images/BSidesLogo.png"
@@ -58,10 +58,10 @@ class BadgeForm:
                              sticky='e')
         
         # Add Name Label
-        self.label_fullname = tk.Label(self.label_container, 
-                                   text="Full Name:", 
+        self.label_lastname = tk.Label(self.label_container, 
+                                   text="Last Name:", 
                                    font=("Ariel, 18"))
-        self.label_fullname.grid(row=1, 
+        self.label_lastname.grid(row=1, 
                              sticky='e')
 
         # Add Company Label
@@ -89,9 +89,9 @@ class BadgeForm:
                              column=1)
         
         # Add Entry for Full Name
-        self.entry_fullname = tk.Entry(self.entry_container, 
+        self.entry_lastname = tk.Entry(self.entry_container, 
                                    bd = 5)
-        self.entry_fullname.grid(row=1, 
+        self.entry_lastname.grid(row=1, 
                              column=1)
 
         # Add Entry for Company
@@ -128,13 +128,13 @@ class BadgeForm:
     def create_badge(self):
         # Get the user input
         firstname = self.entry_firstname.get()
-        fullname = self.entry_fullname.get()
+        lastname = self.entry_lastname.get()
         company = self.entry_company.get()
         status = self.status_var.get()
 
         # Write the information to a file called badge.txt
         with open(badge_file, "w") as f:
-            f.write(f"{status}\n{firstname}\n{fullname}\n\n{company}\n\n{badge_logo}")
+            f.write(f"{status}\n{firstname}\n{firstname} {lastname}\n\n{company}\n\n{badge_logo}")
 
         # Wait for the Badger 2040 board to be ready
         time.sleep(2)
@@ -153,7 +153,7 @@ class BadgeForm:
 
         # Clear the form
         self.entry_firstname.delete(0, tk.END)
-        self.entry_fullname.delete(0, tk.END)
+        self.entry_lastname.delete(0, tk.END)
         self.entry_company.delete(0, tk.END)
         self.status_var.set(self.options[0])
 
