@@ -3,14 +3,26 @@ from tkinter import messagebox
 from PIL import ImageTk, Image
 import time
 import subprocess
+import argparse
+
+# Create an ArgumentParser object
+parser = argparse.ArgumentParser()
+
+# Add command-line arguments for name, company, and title
+parser.add_argument("--conference", help="Enter Conference Name", default="BSides Fort Wayne 2023")
+parser.add_argument("--formimage", help="Enter location of form logo", default="images/BadgeLogo.jpg")
+parser.add_argument("--localpath", help="Enter location of local files", default="/home/user/Documents/Badger_2040/")
+
+# Parse the command-line arguments
+args = parser.parse_args()
 
 # Set global variables
-local_path = "/home/user/Documents/Badger_2040/"
-conference = "BSides Fort Wayne 2023"
+local_path = args.localpath
+conference = args.conference
 badge_logo = "/badges/BadgeLogo.jpg"
 badge_creator_logo = local_path + "images/BSidesLogo.png"
 badge_file = local_path + "code/badge.txt"
-badge_image = local_path + "images/BadgeLogo.jpg"
+badge_image = local_path + args.formimage
 serial_port = "/dev/ttyACM0"
 status = ['Attendee', 'Sponsor', 'Speaker', 'Volunteer']
 
@@ -127,9 +139,9 @@ class BadgeForm:
 
     def create_badge(self):
         # Get the user input
-        firstname = self.entry_firstname.get()
-        lastname = self.entry_lastname.get()
-        company = self.entry_company.get()
+        firstname = self.entry_firstname.get().strip()
+        lastname = self.entry_lastname.get().strip()
+        company = self.entry_company.get().strip()
         status = self.status_var.get()
 
         # Write the information to a file called badge.txt
@@ -137,10 +149,10 @@ class BadgeForm:
             f.write(f"{status}\n{firstname}\n{firstname} {lastname}\n\n{company}\n\n{badge_logo}")
 
         # Wait for the Badger 2040 board to be ready
-        time.sleep(2)
+        # time.sleep(2)
 
         # Transfer the files to the Badger 2040 board
-        subprocess.run(['rshell', '-p', 
+        subprocess.run(['rshell', '--timing', '-p', 
                   serial_port, 
                   'cp', 
                   badge_file, 

@@ -17,7 +17,6 @@ args = parser.parse_args()
 
 # Set other variables
 local_path = "/home/user/Documents/Badger_2040/"
-conference = "BSides Fort Wayne 2023"
 badge_logo = "/badges/BadgeLogo.jpg"
 badge_file = local_path + "code/badge.txt"
 badge_image = local_path + "images/BadgeLogo.jpg"
