@@ -11,7 +11,6 @@ This is a work in progress and more information will be added soon.
   - [BSides Fort Wayne Logo](#bsides-fort-wayne-logo)
   - [Badge Logo](#badge-logo)
   - [Badge Text File](#badge-text-file)
-  - [Known Issues](#known-issues)
 
 ## Summary
 
@@ -52,7 +51,3 @@ In addition to the above installs, the user nees to be part of the "dialout" gro
 ## Badge Text File
 
 The badge.txt file gets created by the badge.py and create_badge.py scripts and is then transferred to the Badger 2040 to be used on the badge.
-
-## Known Issues
-
-- The badger_gui.py script will give a confirmation popup even if the badge information failed to send to the Badger 2040.  Basically, there is no error handling in the script.

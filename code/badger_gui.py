@@ -5,13 +5,12 @@ import time
 import subprocess
 
 # Set global variables
-local_path = "/home/user/Documents/Badger_2040/"
+local_path = "/home/dprows/Documents/Badger_2040/"
 conference = "BSides Fort Wayne 2023"
 badge_logo = "/badges/BadgeLogo.jpg"
 badge_creator_logo = local_path + "images/BSidesLogo.png"
 badge_file = local_path + "code/badge.txt"
 badge_image = local_path + "images/BadgeLogo.jpg"
-badge_script = local_path + "code/badge.py"
 serial_port = "/dev/ttyACM0"
 status = ['Attendee', 'Sponsor', 'Speaker', 'Volunteer']
 
@@ -52,40 +51,53 @@ class BadgeForm:
         self.label_container.pack(side=tk.LEFT)
 
         # Add Name Label
-        self.label_name = tk.Label(self.label_container, 
-                                   text="Name:", 
+        self.label_firstname = tk.Label(self.label_container, 
+                                   text="First Name:", 
                                    font=("Ariel, 18"))
-        self.label_name.grid(row=0, 
+        self.label_firstname.grid(row=0, 
+                             sticky='e')
+        
+        # Add Name Label
+        self.label_fullname = tk.Label(self.label_container, 
+                                   text="Full Name:", 
+                                   font=("Ariel, 18"))
+        self.label_fullname.grid(row=1, 
                              sticky='e')
 
         # Add Company Label
         self.label_company = tk.Label(self.label_container, 
                                       text="Company:", 
                                       font=("Ariel, 18"))
-        self.label_company.grid(row=1, 
+        self.label_company.grid(row=2, 
                                 sticky='e')
 
         # Add Status Label
         self.label_status = tk.Label(self.label_container, 
                                      text="Status:", 
                                      font=("Ariel, 18"))
-        self.label_status.grid(row=2, 
+        self.label_status.grid(row=3, 
                                sticky='e')
 
         # Create a frame for the entry widgets
         self.entry_container = tk.Frame(self.field_container)
         self.entry_container.pack(side=tk.LEFT)
 
-        # Add Entry for Name
-        self.entry_name = tk.Entry(self.entry_container, 
+        # Add Entry for First Name
+        self.entry_firstname = tk.Entry(self.entry_container, 
                                    bd = 5)
-        self.entry_name.grid(row=0, 
+        self.entry_firstname.grid(row=0, 
+                             column=1)
+        
+        # Add Entry for Full Name
+        self.entry_fullname = tk.Entry(self.entry_container, 
+                                   bd = 5)
+        self.entry_fullname.grid(row=1, 
                              column=1)
 
         # Add Entry for Company
         self.entry_company = tk.Entry(self.entry_container, 
                                       bd = 5)
-        self.entry_company.grid(row=1, 
+        self.entry_company.grid(row=2, 
                                 column=1)
 
         # Add Dropdown for Status
@@ -96,7 +108,7 @@ class BadgeForm:
                                              self.status_var, 
                                              *self.options)
         self.status_dropdown.config(font=("Ariel",16))
-        self.status_dropdown.grid(row=2, 
+        self.status_dropdown.grid(row=3, 
                                   column=1, 
                                   sticky='ew')
         
@@ -115,13 +127,14 @@ class BadgeForm:
 
     def create_badge(self):
         # Get the user input
-        name = self.entry_name.get()
+        firstname = self.entry_firstname.get()
+        fullname = self.entry_fullname.get()
         company = self.entry_company.get()
         status = self.status_var.get()
 
         # Write the information to a file called badge.txt
         with open(badge_file, "w") as f:
-            f.write(f"{status}\n{name}\n{company}\n\n{conference}\n\n{badge_logo}")
+            f.write(f"{status}\n{firstname}\n{fullname}\n\n{company}\n\n{badge_logo}")
 
         # Wait for the Badger 2040 board to be ready
         time.sleep(2)
@@ -133,18 +146,14 @@ class BadgeForm:
                   badge_file, 
                   badge_image, 
                   '/badges'])
-        subprocess.run(['rshell', '-p', 
-                  serial_port, 
-                  'cp', 
-                  badge_script, 
-                  '/examples'])
 
         # Show a message box to confirm the badge was created
         messagebox.showinfo("Badge Created", 
                             "Badge has been created.")
 
         # Clear the form
-        self.entry_name.delete(0, tk.END)
+        self.entry_firstname.delete(0, tk.END)
+        self.entry_fullname.delete(0, tk.END)
         self.entry_company.delete(0, tk.END)
         self.status_var.set(self.options[0])
 
