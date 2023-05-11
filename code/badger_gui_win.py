@@ -31,8 +31,7 @@ class BadgeForm:
     def __init__(self, master):
         self.master = master
         master.title("Badge Creator")
-        master.attributes('-fullscreen',
-                          True)
+        master.attributes()
 
         # Add Event Title Label
         self.label_event = tk.Label(master, 
@@ -137,7 +136,7 @@ class BadgeForm:
                                        bd=5, 
                                        font=("Ariel",18))
         self.submit_button.pack(pady=10)
-        
+
     # Function to reboot Badger 2040 using machine.reset()
     def reboot_badger(self):
         # Establish a connection to the Badger 2040 board
@@ -171,8 +170,6 @@ class BadgeForm:
                   badge_file, 
                   badge_image, 
                   '/badges'])
-        
-        # Reboots Badger after info has been programmed          
         self.reboot_badger()
 
         # Show a message box to confirm the badge was created
