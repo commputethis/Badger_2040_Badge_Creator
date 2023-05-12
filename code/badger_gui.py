@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 from PIL import ImageTk, Image
-#import time
 import subprocess
 import argparse
 import serial
@@ -20,11 +19,11 @@ args = parser.parse_args()
 # Set global variables
 local_path = args.localpath
 conference = args.conference
-badge_logo = "/badges/BadgeLogo.jpg"
-badge_creator_logo = local_path + "images/BSidesLogo.png"
+badge_logo = '/badges/BadgeLogo.jpg'
+badge_creator_logo = local_path + 'images/BSidesLogo.png'
 badge_file = local_path + "code/badge.txt"
 badge_image = local_path + args.formimage
-serial_port = "/dev/ttyACM0"
+serial_port = '/dev/ttyACM0'
 status = ['Attendee', 'Sponsor', 'Speaker', 'Volunteer']
 
 class BadgeForm:
@@ -141,7 +140,7 @@ class BadgeForm:
     # Function to reboot Badger 2040 using machine.reset()
     def reboot_badger(self):
         # Establish a connection to the Badger 2040 board
-        ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
+        ser = serial.Serial(serial_port, 115200, timeout=1)
 
         # Send the machine.reset() command to reboot the Badger 2040
         ser.write(b'import machine\r\n')
@@ -160,9 +159,6 @@ class BadgeForm:
         # Write the information to a file called badge.txt
         with open(badge_file, "w") as f:
             f.write(f"{status}\n{firstname}\n{firstname} {lastname}\n\n{company}\n\n{badge_logo}")
-
-        # Wait for the Badger 2040 board to be ready
-        # time.sleep(2)
 
         # Transfer the files to the Badger 2040 board
         subprocess.run(['rshell', '--timing', '-p', 
