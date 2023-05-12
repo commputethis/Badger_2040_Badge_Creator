@@ -99,6 +99,7 @@ class BadgeForm:
                                    bd = 5)
         self.entry_firstname.grid(row=0, 
                              column=1)
+        self.entry_firstname.focus_set()
         
         # Add Entry for Full Name
         self.entry_lastname = tk.Entry(self.entry_container, 
@@ -180,6 +181,7 @@ class BadgeForm:
         self.entry_lastname.delete(0, tk.END)
         self.entry_company.delete(0, tk.END)
         self.status_var.set(self.options[0])
+        self.entry_firstname.focus_set()
 
 root = tk.Tk()
 
