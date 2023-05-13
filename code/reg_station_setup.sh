@@ -10,4 +10,4 @@ cd /home/registration/Documents
 
 sudo git clone "https://github.com/commputethis/Badger_2040_Badge_Creator.git"
 
-echo 'python3 "/home/registration/Documents/Badger_2040_Badge_Creator/code/badger_gui.py" --localpath "/home/regsitration/Documents/Badger_2040_Badge_Creator/code"' > "/home/registration/Desktop/run_creator.sh"
+echo 'python3 "/home/registration/Documents/Badger_2040_Badge_Creator/code/badger_gui.py" --localpath "/home/registration/Documents/Badger_2040_Badge_Creator/"' > "/home/registration/Desktop/run_badger_creator.sh"
