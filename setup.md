@@ -32,9 +32,9 @@ If the version isn't returned, then run the following:
 
 ## Install pil
 
-Install pil using the following from terminal:
+Install pil and pil.imagetk using the following from terminal:
 
-- ```sudo apt install python3-pil```
+- ```sudo apt install python3-pil pythong3-pil.imagetk```
 
 ## Install Tkinter
 
