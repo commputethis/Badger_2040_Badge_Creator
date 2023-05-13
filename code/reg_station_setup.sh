@@ -1,6 +1,6 @@
 sudo apt update && sudo apt upgrade -y
 
-sudo apt install python3-pip python3-pil python3-pil.imagetk python3-tk git
+sudo apt install python3-pip python3-pil python3-pil.imagetk python3-tk git -y
 
 pip3 install rshell
 
