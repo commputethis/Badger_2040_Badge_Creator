@@ -101,7 +101,7 @@ class BadgeForm:
                              column=1)
         self.entry_firstname.focus_set()
         
-        # Add Entry for Full Name
+        # Add Entry for Last Name
         self.entry_lastname = tk.Entry(self.entry_container, 
                                    bd = 5)
         self.entry_lastname.grid(row=1, 
