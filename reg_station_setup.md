@@ -40,6 +40,17 @@ This assumes this is a dedicated machine installed for this purpose.  This guide
    1. Right Click on the file and select Properties.
    2. On the Permissions tab, check the Execute box
    3. Close the Properties box
-4. Reboot the machine
+4. Add Run Badger Creator to Startup Applications
+   1. Open Dash (the first icon in the side bar)
+   2. Click on Startup Applications
+   3. Click the Add button
+   4. Type in "Run Badge Creator" in Name
+   5. Click the Browse button
+   6. Double-click Desktop
+   7. Click run_badger_creator.sh
+   8. Click the Open button
+   9. Click the Add button
+   10. Click the Close button
+5. Reboot the machine
 
 All the remains now is to test a badge.  If for some reason the badger_gui script didn't run on startup, run it manually from terminal to see if there are errors.
