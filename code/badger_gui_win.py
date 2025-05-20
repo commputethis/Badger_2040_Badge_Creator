@@ -10,9 +10,9 @@ import serial
 parser = argparse.ArgumentParser()
 
 # Add command-line arguments for name, company, and title
-parser.add_argument("--conference", help="Enter Conference Name", default="BSides Fort Wayne 2023")
+parser.add_argument("--conference", help="Enter Conference Name", default="BSides Fort Wayne 2025")
 parser.add_argument("--formimage", help="Enter location of form logo", default="images/BadgeLogo.jpg")
-parser.add_argument("--localpath", help="Enter location of local files", default="/home/user/Documents/Badger_2040/")
+parser.add_argument("--localpath", help="Enter location of local files", default="/home/registration/Documents/Badger_2040/")
 
 # Parse the command-line arguments
 args = parser.parse_args()
